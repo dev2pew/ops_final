@@ -1,0 +1,45 @@
+services:
+  todo_app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: "todo_app:latest"
+    container_name: "todo_app"
+    restart: "unless-stopped"
+    environment:
+      - "DB_HOST=todo_db"
+      - "DB_NAME=todo_db"
+      - "DB_USER=postgres"
+      - "DB_PASS=secure_password"
+      - "APP_USER=admin"
+      - "APP_PASS=admin123"
+    ports:
+      - "8080:8080"
+    networks:
+      - "todo_net"
+    depends_on:
+      todo_db:
+        condition: service_started
+
+  todo_db:
+    container_name: "todo_db"
+    image: "postgres:15-alpine"
+    restart: "unless-stopped"
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=secure_password"
+      - "POSTGRES_DB=todo_db"
+    networks:
+      - "todo_net"
+    volumes:
+      - "db_data:/var/lib/postgresql/data"
+    shm_size: 128mb
+
+networks:
+  todo_net:
+    name: "todo_net"
+    driver: bridge
+
+volumes:
+  db_data:
+    name: "todo_db_data"

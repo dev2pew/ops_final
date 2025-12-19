@@ -1,0 +1,28 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-date && \
+    echo 'Acquire::Check-Date "false";' >> /etc/apt/apt.conf.d/99ignore-date
+
+RUN apt-get update && apt-get install -y \
+    openssh-server \
+    python3 \
+    python3-pip \
+    python3-apt \
+    sudo \
+    systemd \
+    systemd-sysv \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /var/run/sshd
+RUN echo 'root:securepass' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+RUN useradd -rm -d /home/ansible -s /bin/bash -g root -G sudo -u 1000 ansible
+RUN echo 'ansible:securepass' | chpasswd
+
+RUN echo "ansible ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ansible
+
+CMD ["/lib/systemd/systemd"]

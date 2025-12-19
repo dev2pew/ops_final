@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: todo-app
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:todo_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: always
+
+app:
+  security:
+    user: ${APP_USER:admin}
+    pass: ${APP_PASS:admin}
