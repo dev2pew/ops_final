@@ -28,20 +28,20 @@ Thumbs.db
 *.log
 
 # Docker
-docker-compose.override.yml
-docker-compose.yml
-Dockerfile*
-!Dockerfile   # keep the main Dockerfile
+# docker-compose.override.yml
+# docker-compose.yml
+# Dockerfile*
+# !Dockerfile   # keep the main Dockerfile
 
 # Ansible
 *.retry
 
 # Jenkins
-Jenkinsfile*
-*.jenkins
+# Jenkinsfile*
+# *.jenkins
 
 # Kubernetes
-*.kubeconfig
+# *.kubeconfig
 
 # Scripts output / temporary files
 *.sh~
