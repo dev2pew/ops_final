@@ -1,6 +1,6 @@
 # NOTES
 
-- Полезные скрипты находятся в директории `script/`;
+- Полезные скрипты находятся в директории `scripts/`;
 - Файлы относящиеся к Kubernetes расположены в директории `k8s`;
 - Файлы относящиеся к Ansible расположены в директории `ansible`.
 
@@ -236,14 +236,14 @@ make up
 3. Выдайте права на запуск скриптов
 
 ```sh
-chmod +x script/*.sh
+chmod +x scripts/*.sh
 
 ```
 
 4. Проверить API проекта
 
 ```sh
-./script/api_test.sh
+./scripts/api_test.sh
 
 ```
 
@@ -311,14 +311,14 @@ git commit -m "init"
 5. Разверните Jenkins
 
 ```sh
-./script/jenkins_run.sh
+./scripts/jenkins_run.sh
 
 ```
 
 6. Посмотреть пароль доступа от Jenkins
 
 ```sh
-./script/jenkins_passwd.sh
+./scripts/jenkins_passwd.sh
 
 ```
 

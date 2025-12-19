@@ -1,6 +1,6 @@
 # NOTES
 
-- Useful scripts are located in `script/` directory;
+- Useful scripts are located in `scripts/` directory;
 - Kubernetes related files are located in `k8s` directory;
 - Ansible related files are located in `ansible/` directory.
 
@@ -236,14 +236,14 @@ make up
 3. Allow execution of scripts
 
 ```sh
-chmod +x script/*.sh
+chmod +x scripts/*.sh
 
 ```
 
 4. Test the API
 
 ```sh
-./script/api_test.sh
+./scripts/api_test.sh
 
 ```
 
@@ -311,14 +311,14 @@ git commit -m "init"
 5. Deploy Jenkins
 
 ```sh
-./script/jenkins_run.sh
+./scripts/jenkins_run.sh
 
 ```
 
 6. Get Jenkins password
 
 ```sh
-./script/jenkins_passwd.sh
+./scripts/jenkins_passwd.sh
 
 ```
 
