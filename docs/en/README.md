@@ -19,7 +19,7 @@ wsl.exe
 2. Change directory to current Windows user
 
 ```sh
-cd "/mnt/c/Users/yernurqq"
+cd /mnt/c/Users/$USER
 
 ```
 
@@ -259,14 +259,14 @@ docker images
 1. Tag your `notes_app:latest` with your username
 
 ```sh
-docker tag notes_app:latest yernurqq/notes-app:1.0
+docker tag notes_app:latest $USER/notes-app:1.0
 
 ```
 
 2. Push your image to the Docker Hub
 
 ```sh
-docker push yernurqq/notes-app:1.0
+docker push $USER/notes-app:1.0
 
 ```
 
@@ -282,8 +282,8 @@ cd "~/files/docs/stack/notes_app"
 1. Specify details
 
 ```sh
-git config --global user.email "yernurqq@localhost"
-git config --global user.name "yernurqq"
+git config --global user.email $USER@localhost
+git config --global user.name $USER
 
 ```
 

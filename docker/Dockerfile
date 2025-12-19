@@ -1,51 +1,52 @@
-# --- Stage 1: Build ---
+# 1 - BUILD
 FROM gradle:8.5-jdk17-alpine AS builder
 WORKDIR /build
 
-# Copy Gradle config first to cache dependencies
+# GRADLE
 COPY app/build.gradle app/settings.gradle ./
 COPY app/gradle ./gradle
-# Note: In a real scenario, you should commit the gradlew script.
-# If it's missing, we can use the 'gradle' command from the base image.
-# However, to satisfy the requirement "Use Gradle Wrapper", we assume it exists.
+
+# note: in a real scenario, you should commit the gradlew script.
+# if it's missing, we can use the 'gradle' command from the base image.
+# however, to satisfy the requirement "use gradle wrapper", we assume it exists.
 COPY app/gradlew .
 
-# Download dependencies (fail safe if wrapper missing, use gradle)
+# DEPS
 RUN if [ -f "./gradlew" ]; then ./gradlew build --no-daemon || return 0; else gradle build --no-daemon || return 0; fi
 
-# Copy source code
+# SOURCE
 COPY app/src ./src
 
-# Build the application
+# BUILD
 RUN if [ -f "./gradlew" ]; then \
       ./gradlew clean bootJar -x test --no-daemon; \
     else \
       gradle clean bootJar -x test --no-daemon; \
     fi
 
-# --- Stage 2: Runtime ---
+# RUNTIME
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Create a non-root user
+# CREATE USER
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-# Install curl for healthcheck
+# HEALTHCHECK
 RUN apk add --no-cache curl
 
-# Copy JAR from builder
+# COPY JAR
 COPY --from=builder /build/build/libs/*.jar app.jar
 
-# Set ownership
+# PERMS
 RUN chown appuser:appgroup app.jar
 
-# Switch to non-root user
+# SWITCH TO USER
 USER appuser
 
-# Expose port
+# NETWORK
 EXPOSE 8080
 
-# Healthcheck using Actuator
+# ACTUATOR HEALTHCHECK
 HEALTHCHECK --interval=30s --timeout=3s \
   CMD curl -f http://localhost:8080/actuator/health || exit 1
 

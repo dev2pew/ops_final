@@ -19,7 +19,7 @@ wsl.exe
 2. Смените директорию на данного пользователя Windows
 
 ```sh
-cd "/mnt/c/Users/yernurqq"
+cd /mnt/c/Users/$USER
 
 ```
 
@@ -259,14 +259,14 @@ docker images
 1. Пометьте своим именем пользователя образ `notes_app:latest`
 
 ```sh
-docker tag notes_app:latest yernurqq/notes-app:1.0
+docker tag notes_app:latest $USER/notes-app:1.0
 
 ```
 
 2. Загрузите свой образ на Docker Hub
 
 ```sh
-docker push yernurqq/notes-app:1.0
+docker push $USER/notes-app:1.0
 
 ```
 
@@ -282,8 +282,8 @@ cd "~/files/docs/stack/notes_app"
 1. Введите свою информацию как показано ниже
 
 ```sh
-git config --global user.email "yernurqq@localhost"
-git config --global user.name "yernurqq"
+git config --global user.email $USER@localhost
+git config --global user.name $USER
 
 ```
 

@@ -6,6 +6,7 @@ services:
     image: "todo_app:latest"
     container_name: "todo_app"
     restart: "unless-stopped"
+
     environment:
       - "DB_HOST=todo_db"
       - "DB_NAME=todo_db"
@@ -13,10 +14,13 @@ services:
       - "DB_PASS=secure_password"
       - "APP_USER=admin"
       - "APP_PASS=admin123"
+
     ports:
       - "8080:8080"
+
     networks:
       - "todo_net"
+
     depends_on:
       todo_db:
         condition: service_started
@@ -25,12 +29,15 @@ services:
     container_name: "todo_db"
     image: "postgres:15-alpine"
     restart: "unless-stopped"
+
     environment:
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=secure_password"
       - "POSTGRES_DB=todo_db"
+
     networks:
       - "todo_net"
+
     volumes:
       - "db_data:/var/lib/postgresql/data"
     shm_size: 128mb

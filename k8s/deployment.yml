@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: notes-app
+  name: todo-app
   labels:
-    app: notes
+    app: todo
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: notes
+      app: todo
   template:
     metadata:
       labels:
-        app: notes
+        app: todo
     spec:
       containers:
-      - name: notes-app
-        image: yernurqq/notes-app:1.0
+      - name: todo-app
+        image: $USER/todo-app:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -25,32 +25,32 @@ spec:
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:
-              name: notes-config
+              name: todo-config
               key: DB_HOST
         - name: DB_NAME
           valueFrom:
             configMapKeyRef:
-              name: notes-config
+              name: todo-config
               key: DB_NAME
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: notes-secret
+              name: todo-secret
               key: DB_USER
         - name: DB_PASS
           valueFrom:
             secretKeyRef:
-              name: notes-secret
+              name: todo-secret
               key: DB_PASS
         - name: APP_USER
           valueFrom:
             configMapKeyRef:
-              name: notes-config
+              name: todo-config
               key: APP_USER
         - name: APP_PASS
           valueFrom:
             secretKeyRef:
-              name: notes-secret
+              name: todo-secret
               key: APP_PASS
 
         resources:
