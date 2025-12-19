@@ -1,0 +1,99 @@
+# --- Build output ------------------------------------------------------------
+# Gradle
+/build/
+/gradle/
+/gradlew
+/gradlew.bat
+/.gradle/
+/out/
+
+# Maven
+/target/
+/pom.xml.tag
+/pom.xml.releaseBackup
+/pom.xml.versionsBackup
+/release.properties
+
+# Spring Boot
+/.spring-boot-devtools/
+/spring-boot-devtools.properties
+
+# --- IDE / editor files ------------------------------------------------------
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# --- OS / environment --------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# --- Docker ------------------------------------------------------------------
+docker-compose.override.yml
+docker-compose.yml
+Dockerfile*
+*.dockerignore
+
+# --- Jenkins -----------------------------------------------------------------
+Jenkinsfile
+jenkins/
+*.jpi
+*.hpi
+*.jenkins
+
+# --- Ansible -----------------------------------------------------------------
+ansible/*.retry
+*.retry
+
+# --- Kubernetes --------------------------------------------------------------
+*.kube/
+k8s/*.yaml
+
+# --- Logs --------------------------------------------------------------------
+*.log
+logs/
+log/
+
+# --- Temporary / cache -------------------------------------------------------
+tmp/
+temp/
+*.tmp
+*.temp
+
+# --- Documentation -----------------------------------------------------------
+docs/**/README.md
+
+# --- Scripts ------------------------------------------------------------------
+scripts/*.sh
+
+# --- Misc --------------------------------------------------------------------
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+
+# --- Sensitive files (do not commit) ----------------------------------------
+*.key
+*.pem
+*.crt
+*.p12
+*.jks
