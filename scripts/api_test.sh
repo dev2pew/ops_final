@@ -5,18 +5,17 @@ set -euo pipefail
 BASE_URL="http://localhost:8080/api/todos"
 AUTH="admin:admin123"
 
-echo "--- 1. Testing Health Check ---"
+echo "testing health check..."
 curl -s http://localhost:8080/actuator/health | grep "UP"
 
-echo -e "\n\n--- 2. Create Todo ---"
-curl -u $AUTH -X POST -H "Content-Type: application/json" \
--d '{"task":"Learn Gradle", "completed": false}' $BASE_URL
+echo "create todo..."
+curl -u $AUTH -X POST -H "Content-Type: application/json" -d '{"task":"Finish X task", "completed": false}' $BASE_URL
 
-echo -e "\n\n--- 3. Test Validation (Empty Task) ---"
-# Should return 400 Bad Request
-curl -u $AUTH -X POST -H "Content-Type: application/json" \
--d '{"task":""}' $BASE_URL || true
+# EXPECTED RESULT IS 400
+echo "test validation - empty task..."
+curl -u $AUTH -X POST -H "Content-Type: application/json" -d '{"task":""}' $BASE_URL || true
 
-echo -e "\n\n--- 4. Get All Todos ---"
+echo "get all todos..."
 curl -u $AUTH $BASE_URL
-echo ""
+
+echo "all done."

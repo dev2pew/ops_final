@@ -15,3 +15,5 @@ docker run -d \
   my-jenkins:custom
 
 docker exec jenkins git config --global --add safe.directory /opt/repo
+
+echo "all done."

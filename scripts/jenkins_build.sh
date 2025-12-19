@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
 cd "$(dirname "$0")/.."
 
 docker build -t my-jenkins:custom -f docker/Dockerfile.jenkins .
+
+echo "all done."

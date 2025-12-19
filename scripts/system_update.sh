@@ -2,11 +2,11 @@
 
 set -euo pipefail
 
-# UPDATE THE SYSTEM
+# UPDATE
 sudo apt update
 sudo apt upgrade -y
 
-# INSTALL JAVA 17
+# INSTALL JAVA
 sudo apt install openjdk-17-jdk -y
 
 # VERIFY JAVA
@@ -27,3 +27,5 @@ gradle -v
 # INSTALL GIT
 sudo apt instll git -y
 
+# VERIFY GIT
+git --version
