@@ -1,87 +1,61 @@
-# --- Build output ------------------------------------------------------------
 # Gradle
-/build/
-/gradle/
-/gradlew
-/gradlew.bat
-/.gradle/
-/out/
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+gradle-wrapper.properties
+gradlew
+gradlew.bat
 
 # Maven
-/target/
-/pom.xml.tag
-/pom.xml.releaseBackup
-/pom.xml.versionsBackup
-/release.properties
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
 
-# Spring Boot
-/.spring-boot-devtools/
-/spring-boot-devtools.properties
-
-# --- IDE / editor files ------------------------------------------------------
-# IntelliJ IDEA
+# IDE / Editor
 .idea/
 *.iml
 *.iws
 *.ipr
-out/
-
-# Eclipse
-.project
-.classpath
-.settings/
-bin/
-
-# VS Code
 .vscode/
 *.code-workspace
 
-# --- OS / environment --------------------------------------------------------
+# OS / Misc
 .DS_Store
 Thumbs.db
-desktop.ini
-*.swp
-*~
+*.log
 
-# --- Docker ------------------------------------------------------------------
+# Docker
 docker-compose.override.yml
 docker-compose.yml
 Dockerfile*
-*.dockerignore
+!Dockerfile   # keep the main Dockerfile
 
-# --- Jenkins -----------------------------------------------------------------
-Jenkinsfile
-jenkins/
-*.jpi
-*.hpi
-*.jenkins
-
-# --- Ansible -----------------------------------------------------------------
-ansible/*.retry
+# Ansible
 *.retry
 
-# --- Kubernetes --------------------------------------------------------------
-*.kube/
-k8s/*.yaml
+# Jenkins
+Jenkinsfile*
+*.jenkins
 
-# --- Logs --------------------------------------------------------------------
-*.log
-logs/
-log/
+# Kubernetes
+*.kubeconfig
 
-# --- Temporary / cache -------------------------------------------------------
-tmp/
-temp/
+# Scripts output / temporary files
+*.sh~
+*.bak
 *.tmp
-*.temp
 
-# --- Documentation -----------------------------------------------------------
-docs/**/README.md
+# Minikube binary (if not version‑controlled)
+minikube-linux-amd64
 
-# --- Scripts ------------------------------------------------------------------
-scripts/*.sh
+# Documentation build artifacts
+docs/**/*.pdf
+docs/**/*.html
 
-# --- Misc --------------------------------------------------------------------
+# Misc generated files
 *.class
 *.jar
 *.war
@@ -89,11 +63,7 @@ scripts/*.sh
 *.zip
 *.tar.gz
 *.tgz
-*.rar
 
-# --- Sensitive files (do not commit) ----------------------------------------
-*.key
-*.pem
-*.crt
-*.p12
-*.jks
+# Local environment files
+.env
+.env.*
